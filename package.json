@@ -1,0 +1,27 @@
+{
+  "name": "fishing-for-solitude",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abro1986/fishing-for-solitude.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abro1986/fishing-for-solitude/issues"
+  },
+  "homepage": "https://github.com/Abro1986/fishing-for-solitude#readme",
+  "dependencies": {
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.16"
+  },
+  "devDependencies": {},
+  "description": ""
+}
