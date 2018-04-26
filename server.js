@@ -23,6 +23,8 @@ app.get('/', function(req, res) {
 
 app.post('/spots', function(req, res){
 	console.log('new spot')
+
+	res.send("looking real good")
 });
 
 
