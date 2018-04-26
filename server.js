@@ -32,8 +32,8 @@ app.post('/spots', function(req, res){
 
 
 
-const PORT = process.env.PORT || 3000;
+app.set('port', process.env.PORT || 3001)
 
-app.listen(PORT, function() {
-	console.log(`listening on port ${PORT}`);
-});
+  app.listen(app.get('port'), () => {
+    console.log(`✅ PORT: ${app.get('port')} 🌟`)
+  })
