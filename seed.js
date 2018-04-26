@@ -8,7 +8,7 @@ let fishingSpots = [
 ];
 
 
-//console.log(Spot)
+console.log("hi im alive")
 
 db.Spot.create(fishingSpots ,function(err, spots){
 	if (err) {return console.log(err);}
