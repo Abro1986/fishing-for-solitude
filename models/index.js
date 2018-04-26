@@ -8,3 +8,4 @@ mongoose.connect('mongodb://localhost/fishing-spots');
 
 module.exports.Spot = require("./spot.js")
 
+// mongodb://browntrout:wollybugger@ds259089.mlab.com:59089/fishingspotdb
