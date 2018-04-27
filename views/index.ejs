@@ -3,14 +3,23 @@
   <head>
     <meta charset="UTF-8">
     <title>title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="/scripts/main.js"></script>
+    
+
   </head>
   <body>
 
   	<form action="/spots" method="POST">
-  		<input type="text" placeholder="name" name="name">
-  		<input type="text" placeholder="quote" name="quote">
+  		<input type="text" placeholder="spot" name="name">
+  		<input type="text" placeholder="description" name="description">
   		<button type="submit">Submit</button>
 	</form>
-	<p> <%= spots[1].name %> </p>
+	<div id='spotlist'>
+	</div>	
+	<% for (i=0; i<spots.length; i++) { %>
+	<span> <%= spots[i].name %> <%= spots[i].description %> </span><button type="button" name="button" id= `<%= spots[i]._id %>`>delete</button><br>
+	
+	<% } %>
   </body>
 </html>
