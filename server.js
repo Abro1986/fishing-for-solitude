@@ -14,7 +14,7 @@ app.use(express.static('./public'))
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
+app.get('/spots', function(req, res) {
 	db.Spot.find({}, function(err, spots){
 		console.log(req.body)
 	  if (err) {console.log(err)}
@@ -31,9 +31,19 @@ app.post('/spots', function(req, res){
 		if (err) {console.log(err)}
 	})
 
-	res.redirect("/");
+	res.redirect("/spots");
 });
 
+app.delete('/spots/:id', function(req, res) {
+	db.Spot.findOneAndRemove({_id : req.params.id}, function(err, spots){
+		if (err) {
+			console.log(err)
+		}
+//			res.redirect("/");
+	}) 
+			res.redirect("/spots");
+	
+})
 
 
 

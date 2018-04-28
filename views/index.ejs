@@ -16,10 +16,11 @@
   		<button type="submit">Submit</button>
 	</form>
 	<div id='spotlist'>
-	</div>	
+		
 	<% for (i=0; i<spots.length; i++) { %>
-	<span> <%= spots[i].name %> <%= spots[i].description %> </span><button type="button" name="button" id= `<%= spots[i]._id %>`>delete</button><br>
+	<span> <%= spots[i].name %> <%= spots[i].description %> </span><button class="delete" type="button" name="button" data-id= <%= spots[i]._id %>>delete</button><br>
 	
 	<% } %>
+	</div>
   </body>
 </html>
