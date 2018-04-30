@@ -4,7 +4,7 @@ working = "linked"
 
 $(document).ready(function(){
 
-	species = $('#fish').html()
+	species = $('#fish').val()
 
 	$('#spotlist').on('click', '.delete', function(){
 		console.log($(this).attr('data-id'));
@@ -20,9 +20,9 @@ $(document).ready(function(){
 	$('#spotlist').on('click', '.update', function(){
 		console.log($(this).attr('data-id'));
 		$.ajax({
-			method: 'POST',
+			method: 'PUT',
 			url: '/spots/'+$(this).attr('data-id'),
-			//data: {'species': species},
+			data: {species: $('#fish').val()},
 			success: updateSuccess,
 			error: updateError
 
@@ -42,7 +42,7 @@ function deleteError() {
 
 function updateSuccess(json) {
 	console.log(species)
-	//location.reload();
+	location.reload();
 }
 
 function updateError () {

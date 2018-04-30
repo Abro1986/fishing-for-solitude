@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 let SpotSchema = new Schema({
 	name: String,
 	description: String,
-	species: String,
+	species: String, default: "",
 })
 
 

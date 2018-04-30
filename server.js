@@ -81,22 +81,21 @@ app.delete('/spots/:id', function(req, res) {
 	
 })
 
-// update todo list item
-app.post('/spots/:id', function(req,res){
+
+app.put('/spots/:id', function(req,res){
     let name = req.body.name;
     let description = req.body.description;
-    let fish = req.body.species;
+    let species = req.body.species;
     console.log(req.body)
     Spot.findOneAndUpdate(
         {_id: req.params.id}, 
-        {$set:{species: fish}}, 
-        {new: true}, //<--probably not necessary
+        {$set:{species: species}}, 
+        {new: true}, 
         function (err, spots) {
             if (err) {
                 console.log(err, "Something wrong when updating data!");
             } else {
-                //doc is the json object that is being sent (refer to 'json' callback in JS functions)
-                console.log('updated!', req.body.species);
+                console.log('updated!' + req.body.species);
                 
                 res.render("index.ejs", {spots: spots});
         }
