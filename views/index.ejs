@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>fishing for solitude</title>
+    <link rel="stylesheet" href="/styles/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="/scripts/main.js"></script>
     
@@ -19,15 +20,14 @@
 	</form>
 	<div id='spotlist'>
 		
-	<% for (i=0; i<spots.length; i++) { %>
-	<span> Name: <%= spots[i].name %> <br> Description: <%= spots[i].description %> <br> Species: <%= spots[i].species %> <br> 
-		<button class="delete" type="button" name="button" data-id= <%= spots[i]._id %>>delete</button>
-		<form action="/spots/:id" method="POST" class="species">
-			
+		<% for (i=0; i<spots.length; i++) { %>
+		<div class='spotitem'> Name: <%= spots[i].name %> <br> Description: <%= spots[i].description %> <br> Species: <%= spots[i].species %> <br> 
+			<button class="delete" type="button" name="button" data-id= <%= spots[i]._id %>>delete</button>
 			<button class="update" type="button" name="button" data-id= <%= spots[i]._id %>>update</button><br>
 	
-		</form>
-	</span>
+		
+		</div>
+	
 	<% } %>
 	</div>
   </body>
