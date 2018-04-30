@@ -8,7 +8,7 @@ let path = require('path')
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 
-const User = require('./models/spot')
+const User = require('./models/user')
 
 let app = express()
 const saltRounds = 10;
@@ -28,8 +28,10 @@ app.get('/', function(req,res){
 	res.render("signup.ejs")
 })
 
-app.get('/spots', function(req, res) {
-	db.Spot.find({}, function(err, spots){
+app.get('/allspots', function(req, res) {
+	Spot.find({}, function(err, spots){
+		console.log(spots)
+		
 		console.log(req.body)
 	  if (err) {console.log(err)}
 	
@@ -40,15 +42,17 @@ app.get('/spots', function(req, res) {
 app.post('/signup', function(req, res) {
 		console.log(req.params);
 		console.log(req.body);
+		console.log("sign up first")
 
 	let username = req.body.username;
+
 
 	bcrypt.hash(req.body.password, saltRounds, function(err, hash){
 		let user = new User({username: username, passwordDigest: hash});
 		user.save().then(function()  {
 				console.log('new user created! ', username);
 				req.session.user = user;
-				res.redirect('/spots')
+				res.redirect('/allspots')
 		})
 	})	
 });
@@ -57,23 +61,50 @@ app.post('/signup', function(req, res) {
 app.post('/spots', function(req, res){
 	console.log(req.body)
 	let newSpot = db.Spot(req.body);
-	db.Spot.create(newSpot, function(err, newSpot) {
+	Spot.create(newSpot, function(err, newSpot) {
 		if (err) {console.log(err)}
 	})
-
-	res.redirect("/spots");
+	console.log(db.Spot(req.body))
+	res.redirect("/allspots");
 });
 
 app.delete('/spots/:id', function(req, res) {
-	db.Spot.findOneAndRemove({_id : req.params.id}, function(err, spots){
+	Spot.findOneAndRemove({_id : req.params.id}, function(err, spots){
 		if (err) {
 			console.log(err)
 		}
-//			res.redirect("/");
+//			res.redirect("/allspots");
+			res.render("index.ejs", {spots: spots});
+
 	}) 
-			res.redirect("/spots");
+//			res.render("index.ejs", {spots: spots});
 	
 })
+
+// update todo list item
+app.post('/spots/:id', function(req,res){
+    let name = req.body.name;
+    let description = req.body.description;
+    let fish = req.body.species;
+    console.log(req.body)
+    Spot.findOneAndUpdate(
+        {_id: req.params.id}, 
+        {$set:{species: fish}}, 
+        {new: true}, //<--probably not necessary
+        function (err, spots) {
+            if (err) {
+                console.log(err, "Something wrong when updating data!");
+            } else {
+                //doc is the json object that is being sent (refer to 'json' callback in JS functions)
+                console.log('updated!', req.body.species);
+                
+                res.render("index.ejs", {spots: spots});
+        }
+    })
+});
+
+
+
 
 
 

@@ -18,8 +18,14 @@
 	<div id='spotlist'>
 		
 	<% for (i=0; i<spots.length; i++) { %>
-	<span> <%= spots[i].name %> <%= spots[i].description %> </span><button class="delete" type="button" name="button" data-id= <%= spots[i]._id %>>delete</button><br>
+	<span> <%= spots[i].name %> <%= spots[i].description %> <%= spots[i].species %> 
+		<button class="delete" type="button" name="button" data-id= <%= spots[i]._id %>>delete</button>
+		<form action="/spots/:id" method="POST">
+			<input id="fish" type="text" placeholder="species" name="species">
+			<button class="update" type="button" name="button" data-id= <%= spots[i]._id %>>update</button><br>
 	
+		</form>
+	</span>
 	<% } %>
 	</div>
   </body>

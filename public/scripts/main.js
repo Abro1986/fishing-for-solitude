@@ -4,25 +4,50 @@ working = "linked"
 
 $(document).ready(function(){
 
+	species = $('#fish').html()
+
 	$('#spotlist').on('click', '.delete', function(){
 		console.log($(this).attr('data-id'));
 		$.ajax({
 			method: 'DELETE',
-			url: 'spots/'+$(this).attr('data-id'),
+			url: '/spots/'+$(this).attr('data-id'),
 			success: deleteSuccess,
 			error: deleteError
+
+		})
+	})
+
+	$('#spotlist').on('click', '.update', function(){
+		console.log($(this).attr('data-id'));
+		$.ajax({
+			method: 'POST',
+			url: '/spots/'+$(this).attr('data-id'),
+			//data: {'species': species},
+			success: updateSuccess,
+			error: updateError
 
 		})
 	})
 })
 
 function deleteSuccess(json) {
-	let spotId = json;
-	console.log('delete spot' + spotId);
-//	break;
+	console.log(species)
+	location.reload();
 
 }
 
 function deleteError() {
 	console.log('something wrong with ajax')
 }
+
+function updateSuccess(json) {
+	console.log(species)
+	//location.reload();
+}
+
+function updateError () {
+	console.log('better start googling')
+}
+
+
+
