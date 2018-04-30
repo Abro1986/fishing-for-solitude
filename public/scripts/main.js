@@ -4,7 +4,7 @@ working = "linked"
 
 $(document).ready(function(){
 
-	species = $('#fish').val()
+	species = $('.fish').val()
 
 	$('#spotlist').on('click', '.delete', function(){
 		console.log($(this).attr('data-id'));
