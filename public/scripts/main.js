@@ -32,7 +32,7 @@ $(document).ready(function(){
 
 function deleteSuccess(json) {
 	console.log(species)
-	location.reload();
+	//location.reload();
 
 }
 

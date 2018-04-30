@@ -4,9 +4,18 @@ body {
 	background-size: cover;
 }
 
+h1 {
+	text-align: center;
+	color: #FFCE97 ;
+}
+
+form {
+	text-align: center;
+}
+
 .spotitem {
 	border: 1px solid black;
 	text-align: center;
-	background-color: rgba(25,29,47,0.3);
-	color: #765714;
+	background-color: rgba(25,29,47,0.5);
+	color: #FFCE97;
 }

@@ -77,7 +77,7 @@ app.delete('/spots/:id', function(req, res) {
 			res.render("index.ejs", {spots: spots});
 
 	}) 
-//			res.render("index.ejs", {spots: spots});
+//		
 	
 })
 
